@@ -1,29 +1,43 @@
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
 
-import {useState} from "react";
+  // change code below this line
 
-function App() {
-  // Set the initial count state to zero, 0
-  const [count, setCount] = useState(0);
-
-  // Create handleIncrement event handler
-  const handleIncrement = () => {
-    setCount(prevCount => prevCount + 1);
+  increment() {
+    this.setState({
+      count: this.state.count + 1
+    });
+  };
+ 
+  decrement() {
+    this.setState({
+      count: this.state.count - 1
+    });
   };
 
-  //Create handleDecrement event handler
-  const handleDecrement = () => {
-    setCount(prevCount => prevCount - 1);
+  reset() {
+    this.setState({
+      count: 0
+    });
   };
-  return (
-    <div>
-      <div>
-        <button onClick={handleDecrement}>-</button>
-        <h5>Count is {count}</h5>
-        <button onClick={handleIncrement}>+</button>
-      </div>
-      <button onClick={() => setCount(0)}>Reset</button>
-    </div>
-  );
-}
 
+  // change code above this line
+  render() {
+    return (
+
+   <div>
+   <button className='inc' onClick={(e) => this.increment(e)}>Increment!</button>
+    <button className='dec' onClick={(e) => this.decrement(e)}>Decrement!</button>
+    <button className='reset' onClick={(e) => this.reset(e)}>Reset</button>
+    <h1>Current Count: {this.state.count}</h1>
+  </div>
+    );
+  }
+};
 export default App;
+
