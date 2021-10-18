@@ -1,19 +1,20 @@
-import React from 'react'
- import './App.css'
-//import '../Todo.scss';
-//import '../src/Todo.scss';
-import NewTaskForm from './component/NewTaskForm';
-import TaskList from './component/TaskList';
 
-function App() {
-  // 2
+import React from 'react';
+import WeatherCard from './component/WeatherCard';
+import './App.css';
+
+const App = () => {
   return (
-    <div className="container">
-      <h1 className="title">Todo List</h1>
-      <NewTaskForm />
-      <TaskList />
+    <div className="App">
+      <WeatherCard
+        dt={1602104400 * 1000}
+        temp_min="22.67"
+        temp_max="24.39"
+        main="Clear"
+        icon="01d"
+      />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
