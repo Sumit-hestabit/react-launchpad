@@ -1,49 +1,29 @@
 
+import {useState} from "react";
 
-import React from "react";
+function App() {
+  // Set the initial count state to zero, 0
+  const [count, setCount] = useState(0);
 
-class App extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      date:new Date(),
-      clickStatus: false,
-    };
-  }
-  componentWillMount(){
-    console.log('component will mount')
-  }
-  getList = () => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-    .then(res=>res.json())
-    .then(data=>this.setState({list:data}));
-  }
- 
-  componentDidMount(){
-    console.log('component did mount')
-    this.getList();
-  }
- 
- 
-  shouldComponentUpdate(nextProps,nextState){
-    return this.state.list!== nextState.list
-  }
-  componentWillUpdate(nextProps,nextState){
-    console.log('component will update');
-  }
-  componentDidUpdate(prevProps,prevState){
-    console.log('component did update');
-  }
+  // Create handleIncrement event handler
+  const handleIncrement = () => {
+    setCount(prevCount => prevCount + 1);
+  };
 
-render() {
+  //Create handleDecrement event handler
+  const handleDecrement = () => {
+    setCount(prevCount => prevCount - 1);
+  };
   return (
-     <div>
-        <h3>Hello Mounting Lifecycle Methods! {this.state.getList}</h3>
-     </div>
+    <div>
+      <div>
+        <button onClick={handleDecrement}>-</button>
+        <h5>Count is {count}</h5>
+        <button onClick={handleIncrement}>+</button>
+      </div>
+      <button onClick={() => setCount(0)}>Reset</button>
+    </div>
   );
 }
 
-}
-
 export default App;
-
